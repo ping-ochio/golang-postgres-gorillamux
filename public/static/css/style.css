@@ -1,0 +1,56 @@
+body {
+    background-color: #292b2e;
+    color: rgb(228, 219, 219);
+    max-width: 90% ;
+    margin: 0 auto;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+.active {
+   /*text-decoration: line-through;*/
+   color: #401919;
+}
+
+.container {
+  font-family: arial, sans-serif;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+    background-color: rgb(96, 97, 97);
+    margin-top: 5rem;
+    border-radius: 10px;
+  }
+.title{
+    text-align: center;
+}
+
+/*---------------------- TABLES -----------------*/
+table {
+
+    border-collapse: collapse;
+  
+    width: 100%;
+  
+  }
+  
+  td, th {
+  
+    border: 1px solid #131313;
+  
+    text-align: left;
+  
+    padding: 8px;
+  
+  }
+  
+  tr:nth-child(even) {
+  
+    background-color: #333232;
+  
+  }
+
+  .box{
+    overflow-x:auto;
+  }
