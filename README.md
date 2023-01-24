@@ -115,6 +115,7 @@ services:
 - midellware
 - jwt
 - authentication
+- add redis and mongodb to manage nosql data
 - problems & solutions
   - handle null values in Insert & Update 
 - make a retry limit to try connect to the database(course storage)
