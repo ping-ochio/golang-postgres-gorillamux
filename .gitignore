@@ -3,4 +3,4 @@ dockerconnection.session.sql
 makefile
 multiplelines.txt
 esnuevo.txt
-.vscode
+*.vscode*
