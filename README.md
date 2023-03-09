@@ -1,4 +1,4 @@
-## API-REST -- GORILLA MUX -- POSTGRESQL (PLANTEAMIENTO DEL PROYECTO )
+## API-REST -- GORILLA MUX -- POSTGRESQL (PROJECT APPROACH )
 
 - In this *API* we implement the use of ***GORILLA MUX PACKAGE*** as route handler
 and a database **POSRGESQL** to store the data of ***USERS*** and ***PRODUCTS***.
@@ -84,7 +84,7 @@ services:
 
   postgres:
     image: postgres:14.5
-      #restart: always
+      restart: always
     ports:
       - "5432:5432"
     environment:
@@ -102,6 +102,24 @@ services:
       - "80:80"
     depends_on:
       - postgres    
+
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports: 
+      - "6379:6379"
+    command: redis-server 
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+                                           
+
+
 ```
 
 - we also have a docker container that runs a ***"pgadmin4 "*** instance on localhost:80.
@@ -111,11 +129,15 @@ services:
 
 
 ## MORE TO DO 
+- Password encrypt and saved to db when create a user.(DONE)
+- authentication (DONE)
+- jwt (DONE)
+- midellware (DONE)
+- Data validation
+- Implement Rate Limit
 - testing
-- midellware
-- jwt
-- authentication
-- add redis and mongodb to manage nosql data
+- add redis (DONE)
+  and mongodb to manage nosql data (DONE)
 - problems & solutions
   - handle null values in Insert & Update 
 - make a retry limit to try connect to the database(course storage)

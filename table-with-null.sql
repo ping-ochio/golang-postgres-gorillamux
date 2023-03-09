@@ -4,7 +4,8 @@ CREATE TABLE users (
 	user_name VARCHAR(50),
 	name VARCHAR(50),
 	surname VARCHAR(50),
-	password VARCHAR(50),
+	email VARCHAR(50),
+	password VARCHAR(100), -- 100 because hash password
 	age SMALLINT,
 	active BOOLEAN,
 	created_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -45,4 +46,9 @@ update users set user_name = 's' where user_name = 's';
 -- --------- SHOW TABLE'S COLUMNS & TYPES --------- 
 \d products
 
--- ------------
+-- ------------ CASE INSENSITIVE ------------------
+select * from users where name ~* 'an' ;
+
+
+-- ----- HOW TO CONNECT TO MONGODB IN CONSOLE -----
+mongosh --username admin --password password --port 27017

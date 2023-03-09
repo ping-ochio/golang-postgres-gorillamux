@@ -1,56 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: aliceblue;
+}
+
 body {
-    background-color: #292b2e;
-    color: rgb(228, 219, 219);
-    max-width: 90% ;
-    margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg,#833ab4,#fd1d1d,#fcb045);
+  height: 100vh;
+  overflow: hidden;
+  color: aliceblue;
 }
 
 ul li {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .active {
-   /*text-decoration: line-through;*/
-   color: #401919;
+  /*text-decoration: line-through;*/
+  color: #aaaaaa;
 }
 
 .container {
-  font-family: arial, sans-serif;
-    border: 2px solid black;
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-    background-color: rgb(96, 97, 97);
-    margin-top: 5rem;
-    border-radius: 10px;
-  }
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+  background-color: rgb(44, 44, 44);
+  margin-top: 5rem;
+  border-radius: 10px;
+  position: static;
+  border: 3px solid #53574e !important;
+  margin: 10px 30px;
+}
 .title{
     text-align: center;
+    background-color: #53574e;
+    color: black;
 }
 
 /*---------------------- TABLES -----------------*/
 table {
+  border-collapse: collapse;
+  width: 100%;
+}
+  
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+  
+tr:nth-child(even) {
+  background-color: #383737;
+}
 
-    border-collapse: collapse;
-  
-    width: 100%;
-  
-  }
-  
-  td, th {
-  
-    border: 1px solid #131313;
-  
-    text-align: left;
-  
-    padding: 8px;
-  
-  }
-  
-  tr:nth-child(even) {
-  
-    background-color: #333232;
-  
-  }
-
-  .box{
-    overflow-x:auto;
-  }
+.box{
+  overflow-x:auto;
+  border-radius: 10px 0;
+}

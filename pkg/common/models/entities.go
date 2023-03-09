@@ -13,11 +13,12 @@ type Product struct {
 }
 
 type User struct {
-	User_ID   int    `json:"user_id"`
-	User_Name string `json:"user_name"`
-	Name      string `json:"name"`
-	Surname   string `json:"surname"`
-	Password  string `json:"password"`
-	Age       int    `json:"user_age"`
-	Active    bool   `json:"active"`
+	User_ID   int    `json:"user_id" bson:"-"`
+	User_Name string `json:"user_name" bson:"-"`
+	Email     string `json:"email" bson:"-"`
+	Name      string `json:"name" bson:"name"`
+	Surname   string `json:"surname" bson:"surname"`
+	Password  string `json:"password" bson:"-"`
+	Age       int    `json:"age" bson:"age"`
+	Active    *bool  `json:"active,omitempty" bson:"-"`
 }

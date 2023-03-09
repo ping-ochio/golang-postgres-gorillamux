@@ -23,52 +23,62 @@ func Getproduct(w http.ResponseWriter, r *http.Request) {
 	if err1 != nil {
 		log.Println(err1)
 	}
+	if CheckProdExists(product.Product_id) {
 
-	nameNull := sql.NullString{}
-	descNull := sql.NullString{}
-	priceNull := sql.NullFloat64{}
-	quantityNull := sql.NullInt64{}
+		nameNull := sql.NullString{}
+		descNull := sql.NullString{}
+		priceNull := sql.NullFloat64{}
+		quantityNull := sql.NullInt64{}
 
-	//------------------------------------------------------------------------
-	sqlStatement := `SELECT product_id, product_name, description, price, quantity
-	FROM products WHERE product_id=$1`
-	db := config.GetConnection()
-	defer db.Close()
+		//------------------------------------------------------------------------
+		sqlStatement := `SELECT product_id, product_name, description, price, quantity
+		FROM products WHERE product_id=$1`
+		db := config.GetConnection()
+		defer db.Close()
 
-	row := db.QueryRow(sqlStatement, product.Product_id)
-	err := row.Scan(
-		&product.Product_id,
-		&nameNull,
-		&descNull,
-		&priceNull,
-		&quantityNull,
-	)
-	switch err {
-	case sql.ErrNoRows:
-		fmt.Println("No rows were returned!")
-	case nil:
-		fmt.Println(product)
-	default:
-		panic(err)
-	}
-	if product.Quantity == 0 {
-		quantityNull.Valid = false
+		row := db.QueryRow(sqlStatement, product.Product_id)
+		err := row.Scan(
+			&product.Product_id,
+			&nameNull,
+			&descNull,
+			&priceNull,
+			&quantityNull,
+		)
+		switch err {
+		case sql.ErrNoRows:
+			fmt.Println("No rows were returned!")
+		case nil:
+			fmt.Println(product)
+		default:
+			panic(err)
+		}
+		if product.Quantity == 0 {
+			quantityNull.Valid = false
+		} else {
+			quantityNull.Valid = true
+			quantityNull.Int64 = int64(product.Quantity)
+		}
+
+		product.Product_name = nameNull.String
+		product.Description = descNull.String
+		product.Price = priceNull.Float64
+		product.Quantity = quantityNull.Int64
+		log.Println("FINAL: ", product)
+
+		template, err := template.ParseFiles("../public/templates/singleproduct.html")
+		if err != nil {
+			fmt.Fprintf(w, " PAGE NOT FOUND..!")
+		} else {
+			template.Execute(w, product)
+		}
 	} else {
-		quantityNull.Valid = true
-		quantityNull.Int64 = int64(product.Quantity)
-	}
-
-	product.Product_name = nameNull.String
-	product.Description = descNull.String
-	product.Price = priceNull.Float64
-	product.Quantity = quantityNull.Int64
-	fmt.Println("FINAL: ", product)
-
-	template, err := template.ParseFiles("../public/templates/singleproduct.html")
-	if err != nil {
-		fmt.Fprintf(w, " PAGE NOT FOUND..!")
-	} else {
-		template.Execute(w, product)
+		template, err := template.ParseFiles("../public/templates/singleproduct.html")
+		if err != nil {
+			fmt.Fprintf(w, " PAGE NOT FOUND..!")
+		} else {
+			product.Description = "PRODUCT NOT FOUND"
+			template.Execute(w, product)
+		}
 	}
 
 }

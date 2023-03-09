@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/contact.css">
+
 </head>
-
 <body>
-    <h1>Hi there</h1>
-    <div class="row">
 
-        <!-- Form -->
-            <div class="col-md-6">
-                <h6>Fill out the following form to contact us: </h6>
-                <form action="" class="mb-5">
-                    <div class="form-group">
-                        <label for="nya">Name & Surname</label>
-                        <input type="text" class="form-control" id="nya" aria-describedby="nyaHelp" required>
-                        <small id="nyaHelp" class="form-text text-muted">Example: Charless Tower</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
-                        <small id="emailHelp" class="form-text text-muted">Example: charless@mail.com</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" class="form-control" id="asunto" aria-describedby="asuntoHelp" required>
-                        <small id="asuntoHelp" class="form-text text-muted">Example: Asq for Services</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mesagge</label>
-                        <textarea class="form-control" id="mensaje" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+    
+    <div class="imputs">
+        <h1>Contact Form</h1>
+        <form action="/">
+    
+            <div class="txt_field">
+                <label for="fname">First Name</label>
+                <input type="text" id="name" name="firstname">
             </div>
-</body>
 
+            <div class="txt_field">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname">
+            </div>
+
+            <div class="txt_field">
+                <label for="country">Country</label>
+                <select id="country" name="country">
+                <option value="australia">Argentina</option>
+                <option value="canada">Uruguay</option>
+                <option value="usa">Chile</option>
+                <option value="usa">Colombia</option>
+                <option value="usa">Brazil</option>
+                </select>
+            </div>
+
+            <div class="txt_field">
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</body>
 </html>

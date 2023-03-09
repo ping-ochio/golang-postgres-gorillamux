@@ -1,58 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>PRODUCTS LIST</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>HOME</title>
 </head>
-
 <body>
-    <div class="container">
-        <h2 class="title">--- PRODUCTS LIST --- </h2>
-        <div class="box">
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-                {{ range . }}
-                    {{if .Quantity}}
-                        <tr>
-                                <td>{{.Product_id}}</td> 
-                                <td>{{.Product_name}}</td> 
-                                <td>{{.Description}}</td> 
-                                <td>{{.Price}}</td> 
-                                
-                            {{ if .Quantity }}
-                                <td>{{.Quantity}}</td> 
-                            {{ else }}
-                                <td></td>
-                            {{ end }}
-                        </tr>
-                    {{ else }}
-                        <tr class="active">
-                            <td>{{.Product_id}}</td> 
-                            <td>{{.Product_name}}</td> 
-                            <td>{{.Description}}</td> 
-                            <td>{{.Price}}</td> 
-                        {{ if .Quantity }}
-                            <td>{{.Quantity}}</td> 
-                        {{ else }}
-                            <td></td>
-                        {{ end }}
-                        </tr>
-                    {{ end }}
-                {{ end }}
-            </table>
-        </div>
-    </div>
-    <script src="/static/js/app.js" type="text/javascript"></script>
+    <h1>HOME PAGE</h1>
+    
 </body>
-
 </html>

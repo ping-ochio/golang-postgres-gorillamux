@@ -78,7 +78,7 @@ func Getproducts(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	templ, err := template.ParseFiles("../public/templates/index.html")
+	templ, err := template.ParseFiles("../public/templates/products.html")
 	if err != nil {
 		fmt.Fprintf(w, " PAGE NOT FOUND..!")
 	} else {
